@@ -10,15 +10,15 @@ export default class Track extends Component {
   }
 
   addTrack(){
-    this.props.onAdd = this.props.track
+    this.props.onAdd(this.props.track)
   }
 
   removeTrack(){
-    this.props.onRemove = this.props.track
+    this.props.onRemove(this.props.track)
   }
 
   renderAction(){
-    this.props.isRemoval ? <button onClick={this.removeTrack} className="Track-action">-</button> : <button onClick={this.addTrack} className="Track-action">+</button>
+    return this.props.isRemoval ? <button onClick={this.removeTrack} className="Track-action">-</button> : <button onClick={this.addTrack} className="Track-action">+</button>
   }
 
   render() {
@@ -28,7 +28,7 @@ export default class Track extends Component {
           <h3>{this.props.track.name}</h3>
           <p></p>
         </div>
-        
+        {this.renderAction()}
       </div>
     )
   }
